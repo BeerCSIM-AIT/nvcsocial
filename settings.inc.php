@@ -1,0 +1,3 @@
+<?php
+    $profilePicPath = "images/users/";
+?>
