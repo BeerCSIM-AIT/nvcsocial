@@ -1,15 +1,15 @@
 <?php
-    include("connect.php");
-    $id = $_SESSION['user']['id'];
-    $sql = "SELECT * FROM users WHERE id = $id";
-    $qUser = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($qUser);
-    $profilePic = $row['profilePicture'];
-    $firstName = $row['firstName'];
-    $lastName = $row['lastName'];
-    $email = $row['email'];
-    $gender = $row['gender'];
-    $tel = $row['tel'];
+include("connect.php");
+$id = $_SESSION['user']['id'];
+$sql = "SELECT * FROM users WHERE id = $id";
+$qUser = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($qUser);
+$profilePic = $row['profilePicture'];
+$firstName = $row['firstName'];
+$lastName = $row['lastName'];
+$email = $row['email'];
+$gender = $row['gender'];
+$tel = $row['tel'];
 ?>
 <div class="h1 text-center">
     Profile
@@ -34,13 +34,13 @@
                 <div class="col-sm-10">
                     <div class="row">
                         <div class="col-lg-12">
-                            <img src="<?php echo "$profilePicPath/$profilePic"?>" style="width: 200px" class="img-thumbnail">
+                            <img src="<?php echo "$profilePicPath/$profilePic" ?>" style="width: 200px" class="img-thumbnail">
                         </div>
                         <div class="col-lg-12 mt-3">
                             <input class="form-control" type="file" name="profilePic">
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="mb-3 row">
@@ -88,13 +88,12 @@
                 </div>
             </div>
             <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <div class="mb-3 row">
+                <div class="offset-sm-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="reset" class="btn btn-danger">Reset</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="mb-3 row">
-        <div class="offset-sm-2 col-sm-10">
-            <button type="submit" class="btn btn-primary">Save</button>
-            <button type="reset" class="btn btn-danger">Reset</button>
-        </div>
-    </div>
-    </form>
-</div>
 </div>

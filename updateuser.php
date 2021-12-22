@@ -69,19 +69,23 @@ if($uploadOk==1)
     $strPic = "profilePicture='$filename',";
 else $strPic = "";
 
+if($gender=="")
+    $strGender = "gender = NULL";
+else $strGender = "gender = '$gender'";
+
 $sql = "UPDATE users SET 
             firstName='$firstName',
             lastname='$lastName',
             tel='$tel',
             email='$email',
-            $strPic
-            gender='$gender'
+            $strPic 
+            $strGender
             WHERE id = $id";
 $qUser = mysqli_query($conn, $sql);
 if ($qUser) {
-    session_unset("errMsg");
+    unset($_SESSION['errMsg']);
 } else {
-    $_SESSION['errMsg'] = "Error updating profile";
+    $_SESSION['errMsg'] = "Error updating profile" . $sql;
 }
 header("location:index.php?menu=profile");
 
