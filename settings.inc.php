@@ -1,4 +1,5 @@
 <?php
     $profilePicPath = "images/users/";
-    $postPhotoPath = "images/posts/"
+    $postPhotoPath = "images/posts/";
+    $commentPhotoPath = "images/comments/";
 ?>

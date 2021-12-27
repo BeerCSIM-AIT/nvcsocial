@@ -114,6 +114,10 @@ include("connect.php");
                     $page = "admin/managepost.php";
                     break;
             }
+            case "managecomment": {
+                $page = "admin/managecomment.php";
+                break;
+            }
             default: {
                     $page = "main.php";
                     break;

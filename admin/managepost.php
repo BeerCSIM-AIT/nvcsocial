@@ -20,6 +20,7 @@
                     <tr>
                         <th style="width:20%">Poster</th>
                         <th>Message</th>
+                        <th style="width:10%">Comments</th>
                         <th style="width:10%">Manage</th>
                     </tr>
                 </thead>
@@ -48,6 +49,17 @@
                             <div class="mt-3">
                                 Posted On: <?php echo $row['createdAt']; ?>
                             </div>
+                        </td>
+                        <td class="text-center">
+                            <?php
+                                $sqlComments = "SELECT COUNT(*) FROM comment WHERE postId = $id";
+                                $qComments = mysqli_query($conn, $sqlComments);
+                                $comment = mysqli_fetch_array($qComments);
+                                $totalComment = $comment[0];
+                            ?>
+                            <a href="index.php?menu=managecomment&id=<?php echo $id;?>">
+                                <?php echo $totalComment; ?>
+                            </a>
                         </td>
                         <td>
                             <a href="admin/deletepost.php?id=<?php echo $id; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete?')">Delete</a>
