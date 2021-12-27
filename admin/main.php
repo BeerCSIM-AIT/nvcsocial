@@ -1,3 +1,6 @@
+<nav class="breadcrumb">
+    <a class="breadcrumb-item" href="index.php?menu=admin_main">Admin Dashboard</a>
+</nav>
 <div class="h1 text-center">
     Administrator Zone
 </div>
