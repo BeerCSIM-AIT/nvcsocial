@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("settings.inc.php");
-
+include("connect.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -41,7 +41,6 @@ include("settings.inc.php");
                         </li>
                     <?php
                     } else {
-                        include("connect.php");
                         $id = $_SESSION['user']['id'];
                         $sql = "SELECT * FROM users WHERE id = $id";
                         $qUser = mysqli_query($conn, $sql);
