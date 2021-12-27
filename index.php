@@ -107,6 +107,14 @@ include("settings.inc.php");
                     $page = "admin/main.php";
                     break;
             }
+            case "manageuser": {
+                    $page = "admin/manageuser.php";
+                    break;
+            }
+            case "managepost": {
+                    $page = "admin/managepost.php";
+                    break;
+            }
             default: {
                     $page = "main.php";
                     break;
