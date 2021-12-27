@@ -64,7 +64,6 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-
 if($uploadOk==1)
     $strPic = "profilePicture='$filename',";
 else $strPic = "";

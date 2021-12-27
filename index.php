@@ -49,6 +49,7 @@ include("settings.inc.php");
                         $profilePic = $row['profilePicture'];
                         $firstName = $row['firstName'];
                         $lastName = $row['lastName'];
+                        $role = $row['userRole'];
                         $loginName = $firstName . " " . $lastName;
                     ?>
                         <li class="nav-item dropdown">
@@ -57,6 +58,14 @@ include("settings.inc.php");
                                 <?php echo $loginName; ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                <?php
+                                    if($role=='administrator'){
+                                ?>
+                                    <a href="index.php?menu=admin_main" class="dropdown-item">Admin Zone</a>
+                                    <hr class="dropdown-divider">
+                                <?php
+                                    }
+                                ?>
                                 <a class="dropdown-item" href="index.php?menu=profile">Profile</a>
                                 <a class="dropdown-item" href="index.php?menu=changepassword">Change Password</a>
                                 <a class="dropdown-item" href="logout.php">Logout</a>
@@ -94,6 +103,10 @@ include("settings.inc.php");
                     $page = "changepassword.php";
                     break;
                 }
+            case "admin_main": {
+                    $page = "admin/main.php";
+                    break;
+            }
             default: {
                     $page = "main.php";
                     break;
