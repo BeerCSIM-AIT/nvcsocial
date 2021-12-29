@@ -1,4 +1,4 @@
-create database nvc_social;
+-- create database nvc_social;
 
 use nvc_social;
 
@@ -29,7 +29,7 @@ create table post (
 	updatedAt datetime null,
 	primary key (id),
 	constraint foreign key fk_user (userId) references users(id)
-	on delete cascade -- á¡éä¢µèÍä»à»ç¹·Í´ æ ·Ñé§µÒÃÒ§·ÕèÍéÒ§ÁÒ
+	on delete cascade -- รกยกรฉรคยขยตรจร�รคยปร ยปรงยนยทร�ยด รฆ ยทร‘รฉยงยตร’ร�ร’ยงยทร•รจร�รฉร’ยงร�ร’
 	on update cascade
 );
 

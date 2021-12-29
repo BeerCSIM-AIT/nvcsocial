@@ -1,5 +1,5 @@
 <?php
-    include("../connect.php");
+    include("connect.php");
     $id = $_GET['id'];
     $sqlDel = "DELETE FROM comment WHERE id = $id";
     $qDelete = mysqli_query($conn, $sqlDel);

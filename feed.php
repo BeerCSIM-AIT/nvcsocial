@@ -20,7 +20,7 @@ $qPost = mysqli_query($conn, $sqlPost);
                         <div class="mb-3">
                             <label for="" class="form-label h3">What do you feel now:</label>
                             <div class="mt-2">
-                                <textarea class="form-control" name="txtMessage" id="" rows="3"></textarea>
+                                <textarea class="form-control" name="postMessage" id="" rows="3"></textarea>
                             </div>
                         </div>
                         <div class="mb-2">
@@ -93,19 +93,43 @@ $qPost = mysqli_query($conn, $sqlPost);
                                 <div class="card-body">
                                     <div class="h5">Comments</div>
                                     <ul class="list-group list-group-flush">
-                                        <?php
-                                        $sqlComments = "SELECT u.firstName, u.lastName, u.profilePicture, c.id, c.message, c.photo,c.createdAt, c.userId
-                                        FROM users u INNER JOIN comment c ON u.id = c.userId
-                                        AND c.postId = $pid ORDER BY c.createdAt
-                                    ";
-                                        $qComment = mysqli_query($conn, $sqlComments);
-                                        while ($comment = mysqli_fetch_array($qComment)) {
-                                            $cid = $comment['id'];
-                                            $commenter = "$comment[firstName] $comment[lastName]";
-                                            $photo = $comment['photo'];
-                                            $commenterProfilePic = $comment['profilePicture'];
-                                        ?>
-                                            <div class="card">
+                                        <div class="card">
+                                            <li class="list-group-item">
+                                                <form class="d-flex" action="createcomment.php" method="post" enctype="multipart/form-data">
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <div class="mt-2">
+                                                                <input type="text" name="commentMessage" class="form-control">
+                                                                <input type="hidden" name="postId" value="<?php echo $pid; ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-2">
+                                                            <div class="row">
+                                                                <div class="col-md-10">
+                                                                    <input class="form-control" type="file" name="commentPhoto" id="">
+                                                                </div>
+                                                                <div class="col-md-2 d-grid gap-2">
+                                                                    <button type="submit" name="btnPost" id="btnPost" class="btn btn-primary">
+                                                                        Comment
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </li>
+                                            <?php
+                                            $sqlComments = "SELECT u.firstName, u.lastName, u.profilePicture, c.id, c.message, c.photo,c.createdAt, c.userId
+                                            FROM users u INNER JOIN comment c ON u.id = c.userId
+                                            AND c.postId = $pid ORDER BY c.createdAt
+                                            ";
+                                            $qComment = mysqli_query($conn, $sqlComments);
+                                            while ($comment = mysqli_fetch_array($qComment)) {
+                                                $cid = $comment['id'];
+                                                $commenter = "$comment[firstName] $comment[lastName]";
+                                                $photo = $comment['photo'];
+                                                $commenterProfilePic = $comment['profilePicture'];
+                                            ?>
                                                 <li class="list-group-item">
                                                     <div class="fw-bold">
                                                         <img src="<?php echo "$profilePicPath/$commenterProfilePic"; ?>" style="width:30px;">
@@ -116,7 +140,6 @@ $qPost = mysqli_query($conn, $sqlPost);
                                                     ?>
                                                         <div class="mt-2">
                                                             <img class="img-thumbnail" style="width:200px;" src="<?php echo "$commentPhotoPath/$comment[photo]" ?>" alt="">
-                                                            <?php echo $comment['photo']; ?>
                                                         </div>
                                                     <?php
                                                     }
@@ -141,10 +164,10 @@ $qPost = mysqli_query($conn, $sqlPost);
                                                         </div>
                                                     </div>
                                                 </li>
-                                            </div>
-                                        <?php
-                                        }
-                                        ?>
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>

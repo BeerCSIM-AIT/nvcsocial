@@ -16,15 +16,15 @@
         <form class="d-flex" action="updatepost.php" method="post" enctype="multipart/form-data">
             <div class="col">
                 <div class="mb-3">
-                    <img src="<?php echo "$profilePicPath/$postPhoto" ?>" style="width: 200px" class="img-thumbnail">
+                    <img src="<?php echo "$postPhotoPath/$postPhoto" ?>" style="width: 200px" class="img-thumbnail">
                 </div>
                 <div class="mb-2">
                     <input class="form-control" type="file" name="postPhoto" id="">
                 </div>
                 <div class="mb-3">
                     <div class="mt-2">
-                        <input type="hidden" name="postId">
-                        <textarea class="form-control" name="txtMessage" id="" rows="3"><?php echo $post['message']; ?></textarea>
+                        <input type="hidden" name="postId" value="<?php echo $id ?>">
+                        <textarea class="form-control" name="postMessage" id="" rows="3"><?php echo $post['message']; ?></textarea>
                     </div>
                 </div>
                 <div class="mb-2">

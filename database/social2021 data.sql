@@ -47,6 +47,15 @@ INSERT INTO nvc_social.comment
 (postId, userId, message, photo, createdAt, updatedAt)
 VALUES(1, 3, 'Bonjour', NULL, current_timestamp(), NULL);
 
+INSERT INTO nvc_social.comment
+(postId, userId, message, photo, createdAt, updatedAt)
+VALUES(4, 3, 'Bonjour', NULL, current_timestamp(), NULL);
+
+INSERT INTO nvc_social.comment
+(postId, userId, message, photo, createdAt, updatedAt)
+VALUES(7, 1, 'Bonjour', NULL, current_timestamp(), NULL);
+
+
 
 
 
