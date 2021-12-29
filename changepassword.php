@@ -3,6 +3,20 @@
 </div>
 <hr>
 <div class="container">
+<!-- Check Error -->
+<?php
+            if(isset($_SESSION['errMsg'])){
+            ?>
+                <div class="row">
+                    <div class="col text-center" style="color:red">
+                        <?php echo $_SESSION['errMsg']; ?>
+                    </div>
+                </div>
+            <?php
+            }
+        ?>
+<!-- Check Error -->
+
    <form action="actionchangepassword.php" method="POST">
         <!-- old Password -->
         <label for="password" class="col-sm-12 col-form-label">Old Password</label>
@@ -50,6 +64,6 @@
             }
         ?>
         <!-- Button Submit -->
-        <button type="submit" class="btn btn-success mt-5 container-fluid">Change Password</button>
+        <button type="submit" class="btn btn-info mt-5 container-fluid">Change Password</button>
    </form>
 </div>

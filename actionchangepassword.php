@@ -6,15 +6,19 @@
     $newpassword = md5($_POST['newpassword']);
     $confirmpassword = md5($_POST['confirmpassword']);
     if(isset($_SESSION['errPwdSameOld'])){
-        session_unset($_SESSION['errPwdSameOld']);
+        unset($_SESSION['errPwdSameOld']);
     }
 
     if(isset($_SESSION['errMsgConfirmpassword'])){
-        session_unset($_SESSION['errMsgConfirmpassword']);
+        unset($_SESSION['errMsgConfirmpassword']);
     }
 
     if(isset($_SESSION['errPwdNotSameOld'])){
-        session_unset($_SESSION['errPwdNotSameOld']);
+        unset($_SESSION['errPwdNotSameOld']);
+    }
+
+    if(isset($_SESSION['errMsg'])){
+        unset($_SESSION['errMsg']);
     }
 
     // Select query (Password)
@@ -26,24 +30,24 @@
 
     //Check password currently in use
     if($oldpassword != $password){
-        $_SESSION['errPwdNotSameOld'] = "The passwords not college.";
+        $_SESSION['errPwdNotSameOld'] = "The password is incorrect.";
         header('location:index.php?menu=changepassword');
-        die();
     }else if($oldpassword == $newpassword){
         $_SESSION['errPwdSameOld'] = "Password is currently in use.";
         header('location:index.php?menu=changepassword');
-        die();
     }else if($newpassword != $confirmpassword){
         $_SESSION['errMsgConfirmpassword'] = "The passwords do not match. Please check again.";
         header('location:index.php?menu=changepassword');
-        die();
     }else{
-    // $sql = "UPDATE users SET passwordHash = '$newpassword' WHERE id = $id"
-    // $qChangePassword = mysqli_query($conn, $sql)
-    echo "colletg all";
+        $sql = "UPDATE users SET passwordHash = '$newpassword' WHERE id = $id";
+        $qChangePassword = mysqli_query($conn, $sql);
+        if(!$qChangePassword){
+            $_SESSION['errMsg'] = "Error Change Password..!";
+        }else{
+            echo "<script>
+            window.alert('Change Password Success!');
+            window.location.href = 'index.php';</script>";
+        }
     }
     
-
-    
-
 ?>
