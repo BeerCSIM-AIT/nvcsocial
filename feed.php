@@ -20,7 +20,7 @@ $qPost = mysqli_query($conn, $sqlPost);
                         <div class="mb-3">
                             <label for="" class="form-label h3">What do you feel now:</label>
                             <div class="mt-2">
-                                <textarea class="form-control" name="postMessage" id="" rows="3"></textarea>
+                                <textarea class="form-control" name="postMessage" id="" rows="3" required></textarea>
                             </div>
                         </div>
                         <div class="mb-2">
@@ -99,7 +99,7 @@ $qPost = mysqli_query($conn, $sqlPost);
                                                     <div class="col">
                                                         <div class="mb-3">
                                                             <div class="mt-2">
-                                                                <input type="text" name="commentMessage" class="form-control">
+                                                                <input type="text" name="commentMessage" class="form-control" required>
                                                                 <input type="hidden" name="postId" value="<?php echo $pid; ?>">
                                                             </div>
                                                         </div>
