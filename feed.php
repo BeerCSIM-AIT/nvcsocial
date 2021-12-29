@@ -105,41 +105,43 @@ $qPost = mysqli_query($conn, $sqlPost);
                                             $photo = $comment['photo'];
                                             $commenterProfilePic = $comment['profilePicture'];
                                         ?>
-                                            <li class="list-group-item">
-                                                <div class="fw-bold">
-                                                    <img src="<?php echo "$profilePicPath/$commenterProfilePic"; ?>" style="width:30px;">
-                                                    <?php echo $commenter; ?>
-                                                </div>
-                                                <?php
-                                                if (!is_null($comment['photo'])) {
-                                                ?>
-                                                    <div class="mt-2">
-                                                        <img class="img-thumbnail" style="width:200px;" src="<?php echo "$commentPhotoPath/$comment[photo]" ?>" alt="">
-                                                        <?php echo $comment['photo']; ?>
+                                            <div class="card">
+                                                <li class="list-group-item">
+                                                    <div class="fw-bold">
+                                                        <img src="<?php echo "$profilePicPath/$commenterProfilePic"; ?>" style="width:30px;">
+                                                        <?php echo $commenter; ?>
                                                     </div>
-                                                <?php
-                                                }
-                                                ?>
-                                                <div class="mt-2 ms-3">
-                                                    <?php echo $comment['message']; ?>
-                                                </div>
-                                                <div class="mt-2">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            On: <?php echo $comment['createdAt']; ?>
+                                                    <?php
+                                                    if (!is_null($comment['photo'])) {
+                                                    ?>
+                                                        <div class="mt-2">
+                                                            <img class="img-thumbnail" style="width:200px;" src="<?php echo "$commentPhotoPath/$comment[photo]" ?>" alt="">
+                                                            <?php echo $comment['photo']; ?>
                                                         </div>
-                                                        <?php
-                                                        if ($comment['userId'] == $id) {
-                                                        ?>
-                                                            <div class="col" style="text-align:right">
-                                                                <a href="deletecomment.php?id=<?php echo $cid; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')">Delete</a>
-                                                            </div>
-                                                        <?php
-                                                        }
-                                                        ?>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    <div class="mt-2 ms-3">
+                                                        <?php echo $comment['message']; ?>
                                                     </div>
-                                                </div>
-                                            </li>
+                                                    <div class="mt-2">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                On: <?php echo $comment['createdAt']; ?>
+                                                            </div>
+                                                            <?php
+                                                            if ($comment['userId'] == $id) {
+                                                            ?>
+                                                                <div class="col" style="text-align:right">
+                                                                    <a href="deletecomment.php?id=<?php echo $cid; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')">Delete</a>
+                                                                </div>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </div>
                                         <?php
                                         }
                                         ?>
