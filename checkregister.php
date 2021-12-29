@@ -1,7 +1,7 @@
 <?php 
     session_start();
     include("connect.php");
-    //Un set session error checking email and comfirmpassword
+    //Unset session error checking email and comfirmpassword
     unset($_SESSION['errMsgConfirmpassword']);
     unset($_SESSION['errMsgUser']);
     unset($_SESSION['errMsg']);

@@ -28,7 +28,7 @@
         <!-- E-mail -->
         <label for="email" class="col-sm-12 col-form-label">E-Mail</label>
         <input type="email" class="form-control" name="email" id="email" required>
-         <!-- Show error when password not math -->
+         <!-- Show error user is already in use -->
          <?php 
             if(isset($_SESSION['errMsgUser'])){
         ?>
