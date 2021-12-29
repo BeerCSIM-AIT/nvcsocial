@@ -80,7 +80,7 @@ $photo = $post['photo'];
                                             On: <?php echo $comment['createdAt']; ?>
                                         </div>
                                         <div class="col" style="text-align:right">
-                                            <a href="admin/deletecomment.php?id=<?php echo $cid; ?>&pid=<?php echo $id;?>" class="btn btn-danger btn-sm"onclick="return confirm('Are you sure to delete?')">Delete</a>
+                                            <a href="admin/deletecomment.php?id=<?php echo $cid; ?>&pid=<?php echo $id;?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')">Delete</a>
                                         </div>
                                     </div>   
                                 </div>
