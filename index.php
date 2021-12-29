@@ -102,6 +102,11 @@ include("connect.php");
                     $page = "changepassword.php";
                     break;
                 }
+            case "editpost":{
+                    $page = "editpost.php";
+                    break;
+            }
+            //admin zone
             case "admin_main": {
                     $page = "admin/main.php";
                     break;
