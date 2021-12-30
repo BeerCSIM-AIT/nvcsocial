@@ -180,7 +180,13 @@ $qPost = mysqli_query($conn, $sqlPost);
         </div>
     </div>
     <div class="col-md-3 order-md-2 order-sm-first">
-        <img src="<?php echo "$profilePicPath/$profilePic"; ?>" style="width:60px;" class="img-thumbnail me-2">
-        <?php echo $loginName; ?>
+        <div class="row">
+            <div class="col-md-12">
+                <img src="<?php echo "$profilePicPath/$profilePic"; ?>" style="width:60px;" class="img-thumbnail me-2">
+                <?php echo $loginName; ?>
+            </div>
+        </div>
+        <hr>
+       <?php include("friendzone.php"); ?>
     </div>
 </div>

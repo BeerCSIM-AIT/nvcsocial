@@ -58,12 +58,12 @@ include("connect.php");
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownId">
                                 <?php
-                                    if($role=='administrator'){
+                                if ($role == 'administrator') {
                                 ?>
                                     <a href="index.php?menu=admin_main" class="dropdown-item">Admin Zone</a>
                                     <hr class="dropdown-divider">
                                 <?php
-                                    }
+                                }
                                 ?>
                                 <a class="dropdown-item" href="index.php?menu=profile">Profile</a>
                                 <a class="dropdown-item" href="index.php?menu=changepassword">Change Password</a>
@@ -102,27 +102,31 @@ include("connect.php");
                     $page = "changepassword.php";
                     break;
                 }
-            case "editpost":{
+            case "editpost": {
                     $page = "editpost.php";
                     break;
-            }
-            //admin zone
+                }
+            case "friends": {
+                    $page = "friends.php";
+                    break;
+                }
+                //admin zone
             case "admin_main": {
                     $page = "admin/main.php";
                     break;
-            }
+                }
             case "manageuser": {
                     $page = "admin/manageuser.php";
                     break;
-            }
+                }
             case "managepost": {
                     $page = "admin/managepost.php";
                     break;
-            }
+                }
             case "managecomment": {
-                $page = "admin/managecomment.php";
-                break;
-            }
+                    $page = "admin/managecomment.php";
+                    break;
+                }
             default: {
                     $page = "main.php";
                     break;
