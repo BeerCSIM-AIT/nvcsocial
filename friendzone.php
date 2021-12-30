@@ -7,15 +7,18 @@ else
     $friendCount = mysqli_fetch_array($qFriends)[0];
 ?>
 <div class="row mt-3">
-    <div class="col-md-12">
-        <a class="btn" href="index.php?menu=friends">
-            <span class="badge bg-primary"><?php echo $friendCount; ?></span> Friends
-        </a>
-    </div>
-</div>
-<div class="row mt-3">
     <div class="col-md-12 mt-3">
         <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Friends Information</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a class="btn" href="index.php?menu=friends">
+                        <span class="badge bg-primary"><?php echo $friendCount; ?></span> &nbsp;&nbsp;&nbsp;Friends
+                    </a>
+                </li>
+            </ul>
             <div class="card-body">
                 <h4 class="card-title">Friend Requests</h4>
             </div>
@@ -51,8 +54,8 @@ else
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <a href="respondfriendrequest.php?id=<?php echo $reqId;?>&status=accepted" class="badge bg-primary">Accept</a>
-                                            <a href="respondfriendrequest.php?id=<?php echo $reqId;?>&status=rejected" class="badge bg-danger">Reject</a>
+                                            <a href="respondfriendrequest.php?id=<?php echo $reqId; ?>&status=accepted" class="badge bg-primary">Accept</a>
+                                            <a href="respondfriendrequest.php?id=<?php echo $reqId; ?>&status=rejected" class="badge bg-danger">Reject</a>
                                         </div>
                                     </div>
                                 </div>
