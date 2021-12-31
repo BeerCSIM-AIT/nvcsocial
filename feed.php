@@ -5,7 +5,7 @@ $sqlPost = "SELECT p.id, p.userId, p.message, p.photo, p.createdAt,
  WHERE p.userId = $id OR p.userId IN (
      SELECT sourceId FROM friend WHERE targetId = $id
      UNION
-     SELECT targetId FROM friend WHERE sourceId = $id
+     SELECT targetId FROM friend WHERE sourceId = $id AND status='accepted'
  )
  ORDER BY p.createdAt DESC
 ";
