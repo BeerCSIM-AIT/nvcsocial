@@ -68,7 +68,7 @@
     if(isset($_GET['action'])){
         $status = $_GET['action'];
         $idAction = $_GET['idAction'];
-        $sql = "UPDATE users SET status ='$status' WHERE id = $idAction";
+        $sql = "UPDATE users SET status ='$status', updatedAt=now() WHERE id = $idAction";
         $qUpdateStatus = mysqli_query($conn, $sql);
         echo "<script>window.alert('Success!');
         window.location.href = 'index.php?menu=manageuser';</script>";
@@ -77,16 +77,16 @@
     function titleShow($status){
         switch($status){
             case "new":
-                echo "New User";
+                echo "New Users";
                 break;
             case "approved":
-                echo "Approve User";
+                echo "Approved Users";
                 break;
             case "rejected":
-                echo "Reject User";
+                echo "Rejected Users";
                 break;
             default:
-                echo "Banner User";
+                echo "Banned Users";
                 break;
         }
     }
@@ -98,14 +98,14 @@
                 echo "<a href='index.php?menu=manageuser&action=approved&idAction=$id' class='btn btn-success'>Approve</a>";
                 break;
             case "approved":
-                echo "<a href='index.php?menu=manageuser&action=banned&idAction=$id' class='btn btn-danger'>Ban user</a>";
+                echo "<a href='index.php?menu=manageuser&action=banned&idAction=$id' class='btn btn-danger'>Ban</a>";
                 break;
             case "rejected":
-                echo "<a href='index.php?menu=manageuser&action=new&idAction=$id' class='btn btn-info text-light me-1'>Retry</a>";
+                // echo "<a href='index.php?menu=manageuser&action=new&idAction=$id' class='btn btn-info text-light me-1'>Retry</a>";
                 echo "<a href='index.php?menu=manageuser&action=approved&idAction=$id' class='btn btn-success'>Approve</a>";
                 break;
             default:
-                echo "<a href='index.php?menu=manageuser&action=approved&idAction=$id' class='btn btn-danger'>Un Ban</a>";
+                echo "<a href='index.php?menu=manageuser&action=approved&idAction=$id' class='btn btn-danger'>Unban</a>";
                 break;
         }
     }
