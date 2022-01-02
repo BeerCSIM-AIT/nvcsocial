@@ -1,6 +1,6 @@
 <nav class="breadcrumb">
     <a class="breadcrumb-item" href="index.php?menu=admin_main">Admin Dashboard</a>
-    <a class="breadcrumb-item" href="index.php?menu=manageuser">Manage Users</a>
+    <a class="breadcrumb-item" href="index.php?menu=manageuser">Manage Posts</a>
 </nav>
 <div class="h1 text-center">
     Manage User
@@ -56,8 +56,7 @@
                 }
             }
             ?> 
-        </tbody>
-        
+        </tbody>  
     </table>
     <?php
         }        
@@ -75,8 +74,8 @@
         window.location.href = 'index.php?menu=manageuser';</script>";
     }
 
-    function titleShow($s){
-        switch($s){
+    function titleShow($status){
+        switch($status){
             case "new":
                 echo "New User";
                 break;
@@ -87,7 +86,7 @@
                 echo "Reject User";
                 break;
             default:
-                echo "banned";
+                echo "Banner User";
                 break;
         }
     }
