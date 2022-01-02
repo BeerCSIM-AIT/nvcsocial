@@ -177,7 +177,7 @@
     <?php 
         $sql = "SELECT * FROM users WHERE status = 'banned'";
         $qBanned = mysqli_query($conn, $sql);
-        $rows = mysqli_num_rows($qRejectUser);
+        $rows = mysqli_num_rows($qBanned);
     ?>
     <!-- Baned Users -->
     <h3><label for="banusers" class="col-sm-12 col-form-label">Baner Users.</label></h3>
@@ -230,11 +230,9 @@
     if(isset($_GET['action'])){
         $status = $_GET['action'];
         $idAction = $_GET['idAction'];
-            $sql = "UPDATE users SET status ='$status' WHERE id = $id";
+            $sql = "UPDATE users SET status ='$status' WHERE id = $idAction";
             $qUpdateStatus = mysqli_query($conn, $sql);
             echo "<script>window.alert('Success!');
             window.location.href = 'index.php?menu=manageuser';</script>";
-    }else{
-        $action = "";
     }
 ?>
