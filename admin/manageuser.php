@@ -42,15 +42,16 @@
                 else{
                 for($i=0; $i<$rows; $i++){
                 $result = mysqli_fetch_array($qNewUser);
+                $id = $result['id'];
             ?>
                 <tr>
-                <td><?php echo $result['id'];?></td>
+                <td><?php echo $id;?></td>
                 <td><?php echo $result['firstName'];?></td>
                 <td><?php echo $result['lastName'];?></td>
                 <td><?php echo $result['email'];?></td>
                 <td style="width:250px;">
-                    <a href="#" class="btn btn-danger">Reject</a>
-                    <a href="#" class="btn btn-success">Approve</a>
+                    <a href="index.php?menu=manageuser&action=rejected&idAction=<?php echo $id;?>" class="btn btn-danger">Reject</a>
+                    <a href="index.php?menu=manageuser&action=approved&idAction=<?php echo $id;?>" class="btn btn-success">Approve</a>
                 </td>
                 </tr>
             <?php
@@ -98,14 +99,15 @@
                 }else{
                 for($i=0; $i<$rows; $i++){
                 $result = mysqli_fetch_array($qApproveUser);
+                $id = $result['id'];
             ?>
             <tr>
-                <td><?php echo $result['id'];?></td>
+                <td><?php echo  $id;?></td>
                 <td><?php echo $result['firstName'];?></td>
                 <td><?php echo $result['lastName'];?></td>
                 <td><?php echo $result['email'];?></td>
                 <td style="width:250px;">
-                    <a href="#" class="btn btn-danger">Ban user</a>
+                    <a href="index.php?menu=manageuser&action=banned&idAction=<?php echo $id;?>" class="btn btn-danger">Ban user</a>
                 </td>
             </tr>
             <?php
@@ -116,7 +118,7 @@
     </table>
 
 
-    <!-- PHP SELECT NEW REKECT USERS -->
+    <!-- PHP SELECT REJECT USERS -->
     <?php 
         $sql = "SELECT * FROM users WHERE status = 'rejected'";
         $qRejectUser = mysqli_query($conn, $sql);
@@ -152,15 +154,16 @@
                 }else{
                 for($i=0; $i<$rows; $i++){
                 $result = mysqli_fetch_array($qRejectUser);
+                $id = $result['id'];
             ?>
             <tr>
-                <td><?php echo $result['id'];?></td>
+                <td><?php echo  $id;?></td>
                 <td><?php echo $result['firstName'];?></td>
                 <td><?php echo $result['lastName'];?></td>
                 <td><?php echo $result['email'];?></td>
                 <td style="width:250px;">
-                    <a href="#" class="btn btn-info text-light">Retry</a>
-                    <a href="#" class="btn btn-success">Approve</a>
+                    <a href="index.php?menu=manageuser&action=new&idAction=<?php echo $id;?>" class="btn btn-info text-light">Retry</a>
+                    <a href="index.php?menu=manageuser&action=approved&idAction=<?php echo $id;?>" class="btn btn-success">Approve</a>
                 </td>
             </tr>
             <?php
@@ -204,14 +207,15 @@
                 }else{
                 for($i=0; $i<$rows; $i++){
                 $result = mysqli_fetch_array($qBanned);
+                $id = $result['id'];
             ?>
             <tr>
-                <td><?php echo $result['id'];?></td>
+                <td><?php echo $id;?></td>
                 <td><?php echo $result['firstName'];?></td>
                 <td><?php echo $result['lastName'];?></td>
                 <td><?php echo $result['email'];?></td>
                 <td style="width:250px;">
-                    <a href="#" class="btn btn-danger">Un Ban</a>
+                    <a href="index.php?menu=manageuser&action=approved&idAction=<?php echo $id;?>" class="btn btn-danger">Un Ban</a>
                 </td>
             </tr>
             <?php
@@ -220,5 +224,17 @@
             ?>
         </tbody>
     </table>
-
 </div>
+
+<?php 
+    if(isset($_GET['action'])){
+        $status = $_GET['action'];
+        $idAction = $_GET['idAction'];
+            $sql = "UPDATE users SET status ='$status' WHERE id = $id";
+            $qUpdateStatus = mysqli_query($conn, $sql);
+            echo "<script>window.alert('Success!');
+            window.location.href = 'index.php?menu=manageuser';</script>";
+    }else{
+        $action = "";
+    }
+?>
